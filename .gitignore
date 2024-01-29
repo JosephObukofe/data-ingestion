@@ -1,0 +1,6 @@
+/ny_taxi_postgres_data/
+.env
+*.json
+./terraform.tfstate
+./terraform.tfstate.backup
+./variables.tf

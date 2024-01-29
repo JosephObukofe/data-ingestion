@@ -1,0 +1,35 @@
+services:
+  postgres-database:
+    image: postgres:13
+    env_file:
+      - ./.env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./ny_taxi_postgres_data:/var/lib/postgresql/data:rw
+    ports:
+      - "5433:5432"
+    
+  pg_admin: 
+    image: dpage/pgadmin4:latest
+    env_file:
+      - ./.env
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "8080:80"
+
+  ingestion:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: taxi_data_ingest:v1.0.0
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres-database
+    command: ${ARGS}
+      
