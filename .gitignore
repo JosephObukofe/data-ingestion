@@ -1,4 +1,5 @@
 /ny_taxi_postgres_data/
+/.terraform/providers/registry.terraform.io/hashicorp/google/5.13.0/darwin_arm64/
 .env
 *.json
 ./terraform.tfstate
