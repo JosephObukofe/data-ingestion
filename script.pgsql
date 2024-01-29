@@ -21,7 +21,7 @@ ORDER BY
 	MAX("trip_distance") DESC
 LIMIT 1;
 
--- Three biggest pick up Boroughs → "Brooklyn" "Manhattan" "Queens"
+-- Three biggest pickup Boroughs → "Brooklyn" "Manhattan" "Queens"
 
 SELECT
 	z."Borough"
